@@ -8,10 +8,10 @@ size_t mutate(
         size_t packet_data_size,
         int packet_type
 ) {
+    assert (packet_data_size == 3);
     assert (packet_data[0] == 0x01);
     assert (packet_data[1] == 0x02);
     assert (packet_data[2] == 0x03);
-    assert (packet_data_size == 3);
     assert (packet_type == 1);
 
     packet_data[0] = 0x04;

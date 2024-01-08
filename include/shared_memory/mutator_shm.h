@@ -188,7 +188,7 @@ public:
     void mutate_vec(std::vector<uint8_t> &vec, int packet_type) {
         size_t size = vec.size();
         vec.resize(MUTATOR_MAX_PACKET_DATA_SIZE);
-        size_t new_size = mutate(vec.data(), vec.size(), packet_type);
+        size_t new_size = mutate(vec.data(), size, packet_type);
         vec.resize(new_size);
     }
 
