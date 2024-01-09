@@ -158,13 +158,13 @@ size_t MutatorSharedMemoryClient::mutate(
         throw std::runtime_error("Request should succeed");
 
     if (shm_buf->packet_max_data_size != packet_max_data_size)
-        throw std::runtime_error("Request should be valid");
+        throw std::runtime_error("Response should be valid");
 
     if (shm_buf->packet_data_size > shm_buf->packet_max_data_size)
-        throw std::runtime_error("Request should be valid");
+        throw std::runtime_error("Response should be valid");
 
     if (shm_buf->packet_type != packet_type)
-        throw std::runtime_error("Request should be valid");
+        throw std::runtime_error("Response should be valid");
 
     //
     // Return response
