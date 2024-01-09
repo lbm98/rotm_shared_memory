@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.22.1)
 project(shared_memory)
 
-include_directories(include)
-
 add_subdirectory(src)
 
 enable_testing()
