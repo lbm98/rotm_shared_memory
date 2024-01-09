@@ -113,19 +113,19 @@ size_t MutatorSharedMemoryClient::mutate(
     //
 
     if (packet_data_size > std::numeric_limits<uint16_t>::max())
-        throw std::runtime_error("Request should be valid");
+        throw std::runtime_error("Request should be valid: packet_data_size should fit");
 
     if (packet_max_data_size > std::numeric_limits<uint16_t>::max())
-        throw std::runtime_error("Request should be valid");
+        throw std::runtime_error("Request should be valid: packet_max_data_size should fit");
 
     if (packet_data_size > packet_max_data_size)
-        throw std::runtime_error("Request should be valid");
+        throw std::runtime_error("Request should be valid: packet_data_size should be <= packet_max_data_size");
 
     if (packet_max_data_size > MUTATOR_PACKET_DATA_BUFFER_SIZE)
-        throw std::runtime_error("Request should be valid");
+        throw std::runtime_error("Request should be valid: packet_max_data_size should be <= MUTATOR_PACKET_DATA_BUFFER_SIZE");
 
     if (packet_type > std::numeric_limits<uint8_t>::max())
-        throw std::runtime_error("Request should be valid");
+        throw std::runtime_error("Request should be valid: packet_type should fit");
 
     //
     // Create request
