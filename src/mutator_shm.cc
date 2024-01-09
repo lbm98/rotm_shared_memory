@@ -37,7 +37,7 @@ void MutatorSharedMemoryServer::run(const MutatorRequestHandler &mutator_request
         if (clock_gettime(CLOCK_REALTIME, &ts) == -1)
             throw std::runtime_error("clock_gettime should work");
 
-        ts.tv_sec += 1;
+        ts.tv_sec = 1;
         int ret = sem_timedwait(&shm_buf->sem1, &ts);
         if (ret == -1) {
             if (errno == ETIMEDOUT)
@@ -122,7 +122,8 @@ size_t MutatorSharedMemoryClient::mutate(
         throw std::runtime_error("Request should be valid: packet_data_size should be <= packet_max_data_size");
 
     if (packet_max_data_size > MUTATOR_PACKET_DATA_BUFFER_SIZE)
-        throw std::runtime_error("Request should be valid: packet_max_data_size should be <= MUTATOR_PACKET_DATA_BUFFER_SIZE");
+        throw std::runtime_error(
+                "Request should be valid: packet_max_data_size should be <= MUTATOR_PACKET_DATA_BUFFER_SIZE");
 
     if (packet_type > std::numeric_limits<uint8_t>::max())
         throw std::runtime_error("Request should be valid: packet_type should fit");
