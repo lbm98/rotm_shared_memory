@@ -1,0 +1,1 @@
+add_library(shm_ipc common_shm.cc mutator_shm.cc)

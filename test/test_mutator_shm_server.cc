@@ -6,9 +6,11 @@
 size_t mutate(
         uint8_t *packet_data,
         size_t packet_data_size,
+        size_t packet_max_data_size,
         int packet_type
 ) {
     assert (packet_data_size == 3);
+    assert (packet_max_data_size == 5);
     assert (packet_data[0] == 0x01);
     assert (packet_data[1] == 0x02);
     assert (packet_data[2] == 0x03);

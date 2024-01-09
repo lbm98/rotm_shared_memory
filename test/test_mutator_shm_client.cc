@@ -6,7 +6,7 @@ int main() {
     MutatorSharedMemoryClient mutator_client;
 
     std::vector<uint8_t> packet_data {0x01, 0x02, 0x03};
-    mutator_client.mutate_vec(packet_data, 1);
+    mutator_client.mutate_vec(packet_data, 5, 1);
 
     assert (packet_data.size() == 4);
     assert (packet_data[0] == 0x04);
